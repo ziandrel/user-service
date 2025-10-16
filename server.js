@@ -2,7 +2,6 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import chalk from "chalk";
-import ngrok from "ngrok";
 import { checkConnections } from "./src/config/db.js";
 import createAllTable from "./src/utils/userDbUtils.js";
 import authRoutes from "./src/routes/authRoutes.js";
@@ -21,10 +20,10 @@ app.use(express.json());
 app.use(cors());
 
 // Add ngrok-skip-browser-warning header to all responses
-app.use((req, res, next) => {
-  res.setHeader("ngrok-skip-browser-warning", "true");
-  next();
-});
+// app.use((req, res, next) => {
+//   res.setHeader("ngrok-skip-browser-warning", "true");
+//   next();
+// });
 
 app.use("/api/auth", authRoutes);
 
