@@ -15,7 +15,7 @@ const usersTableQuery = `CREATE TABLE IF NOT EXISTS users (
   zip VARCHAR(20),
   is_verified BOOLEAN DEFAULT FALSE,
   verification_code VARCHAR(6) DEFAULT NULL,
-  code_expires_at DATETIME DEFAULT NULL,
+  code_expires_at DATETIME DEFAULT NULL
 )`;
 
 const userPreferencesTableQuery = `CREATE TABLE IF NOT EXISTS user_preferences (
