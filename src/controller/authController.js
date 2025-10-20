@@ -395,36 +395,36 @@ export const checkEmail = async (req, res) => {
   }
 };
 
-export const sendVerification = async (req, res) => {
-  const { email } = req.body;
-  if (!email) return res.status(400).json({ message: "Email is required" });
+// export const sendVerification = async (req, res) => {
+//   const { email } = req.body;
+//   if (!email) return res.status(400).json({ message: "Email is required" });
 
-  try {
-    const user = await findUserByEmail(email);
-    if (!user) return res.status(404).json({ message: "User not found" });
+//   try {
+//     const user = await findUserByEmail(email);
+//     if (!user) return res.status(404).json({ message: "User not found" });
 
-    // Generate 6-digit OTP
-    const verificationCode = Math.floor(
-      100000 + Math.random() * 900000
-    ).toString();
+//     // Generate 6-digit OTP
+//     const verificationCode = Math.floor(
+//       100000 + Math.random() * 900000
+//     ).toString();
 
-    const expiresAt = new Date(Date.now() + 10 * 60 * 1000); // expires in 10 min
+//     const expiresAt = new Date(Date.now() + 10 * 60 * 1000); // expires in 10 min
 
-    // Save to DB
-    await pool.query(
-      `UPDATE users SET verification_code = ?, code_expires_at = ? WHERE email = ?`,
-      [verificationCode, expiresAt, email]
-    );
+//     // Save to DB
+//     await pool.query(
+//       `UPDATE users SET verification_code = ?, code_expires_at = ? WHERE email = ?`,
+//       [verificationCode, expiresAt, email]
+//     );
 
-    // Send email
-    await sendVerificationCodeEmail(email, verificationCode);
+//     // Send email
+//     await sendVerificationCodeEmail(email, verificationCode);
 
-    return res.json({ message: "Verification code sent to your email" });
-  } catch (error) {
-    console.error("Send verification code error:", error);
-    res.status(500).json({ message: "Failed to send verification code" });
-  }
-};
+//     return res.json({ message: "Verification code sent to your email" });
+//   } catch (error) {
+//     console.error("Send verification code error:", error);
+//     res.status(500).json({ message: "Failed to send verification code" });
+//   }
+// };
 
 export const verifyCode = async (req, res) => {
   const { email, code } = req.body;
