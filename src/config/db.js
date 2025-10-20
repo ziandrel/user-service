@@ -9,13 +9,13 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Load .env file located outside admin-service (at backend/.env)
-dotenv.config({ path: path.resolve(__dirname, "../../../.env") });
+dotenv.config();
 
 const dbConfig = {
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
-  database: process.env.USER_DB,
+  database: process.env.DB_NAME,
   connectionLimit: 10,
   queueLimit: 1,
   waitForConnections: true,
@@ -45,6 +45,9 @@ const createDatabaseIfNotExists = async (dbName) => {
 
 // Create the pool after ensuring the database exists
 const createPool = async () => {
+  console.log(dbConfig.user);
+  console.log(dbConfig.database);
+
   await createDatabaseIfNotExists(dbConfig.database);
   return mysql.createPool(dbConfig);
 };
