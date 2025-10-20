@@ -45,9 +45,6 @@ const createDatabaseIfNotExists = async (dbName) => {
 
 // Create the pool after ensuring the database exists
 const createPool = async () => {
-  console.log(dbConfig.user);
-  console.log(dbConfig.database);
-
   await createDatabaseIfNotExists(dbConfig.database);
   return mysql.createPool(dbConfig);
 };
