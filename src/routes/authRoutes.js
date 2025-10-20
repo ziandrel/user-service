@@ -7,7 +7,7 @@ import {
   verifyEmail,
   verifyCode,
   checkEmail,
-  // sendVerification,
+  sendVerification,
   registerSeller,
   setUserPreferences,
   getUserPreferencesHandler,
@@ -23,7 +23,7 @@ router.get("/verify-email", verifyEmail);
 router.post("/verify-code", verifyCode);
 
 router.post("/check-email", checkEmail);
-// router.post("/send-verification-code", sendVerification);
+router.post("/send-verification-code", sendVerification);
 router.post("/register-seller", registerSeller);
 router.post("/login-seller", loginSeller); // seller-specific
 
