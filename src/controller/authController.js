@@ -91,8 +91,6 @@ export const registerUser = async (req, res) => {
       passwordhash: hashed,
       phone,
       role,
-      verification_code,
-      code_expires_at,
       is_verified: false,
       needs_password: false,
     });
