@@ -1,12 +1,6 @@
 import chalk from "chalk";
 import dotenv from "dotenv";
 import mysql from "mysql2/promise";
-import path from "path";
-import { fileURLToPath } from "url";
-
-// Recreate __dirname for ES module compatibility
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 // Load .env file located outside admin-service (at backend/.env)
 dotenv.config();
@@ -63,6 +57,3 @@ export const checkConnections = async () => {
     throw error;
   }
 };
-
-// Export
-export default { pool, checkConnections };

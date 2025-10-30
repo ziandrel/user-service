@@ -12,6 +12,11 @@ import {
   setUserPreferences,
   getUserPreferencesHandler,
   loginRider,
+  getUsers, //ADMIN
+  adminCreateUser,
+  updateUser,
+  deleteUser,
+  changeUserPassword,
 } from "../controller/authController.js";
 
 const router = express.Router();
@@ -31,5 +36,12 @@ router.post("/preferences", setUserPreferences);
 router.get("/preferences/:userId", getUserPreferencesHandler);
 
 router.post("/rider/login", loginRider);
+
+//AMIN-PANEL SIDE
+router.get("/users", getUsers);
+router.post("/users", adminCreateUser);
+router.put("/users/:id", updateUser);
+router.delete("/users/:id", deleteUser);
+router.put("/users/:id/password", changeUserPassword);
 
 export default router;
